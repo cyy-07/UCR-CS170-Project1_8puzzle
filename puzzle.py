@@ -35,3 +35,53 @@ class Puzzle:
                 else:
                     print(num, end=" ")
             print()
+   
+    #Instead of defining all 8 number's moves, 
+    #I noticed that we can just define the blank's move
+    #(Because every move can be seen as the number swop with the blank).
+
+    def move_up(self):
+        blank_position = self.find_blank()
+        row = blank_position[0]
+        col = blank_position[1]
+        #check whether we can move up or not, if not, return None.
+        if row == 0:
+            return None
+        updated_state = self.copy()
+        updated_state[row][col]= updated_state[row-1][col]
+        updated_state[row-1][col]=0
+        return Puzzle(updated_state)
+    #define move in other directions in the same way.
+    def move_down(self):
+        blank_position = self.find_blank()
+        row = blank_position[0]
+        col = blank_position[1]
+        if row == self.size - 1:
+            return None
+        updated_state = self.copy()
+        updated_state[row][col] = updated_state[row + 1][col]
+        updated_state[row + 1][col] = 0
+        return Puzzle(updated_state)
+    def move_right(self):
+        blank_position = self.find_blank()
+        row = blank_position[0]
+        col = blank_position[1]
+        if col == self.size - 1:
+            return None
+        updated_state = self.copy()
+        updated_state[row][col] = updated_state[row][col + 1]
+        updated_state[row][col + 1] = 0
+        return Puzzle(updated_state)
+    def move_left(self):
+        blank_position = self.find_blank()
+        row = blank_position[0]
+        col = blank_position[1]
+        if col == 0:
+            return None
+        updated_state = self.copy()
+        updated_state[row][col] = updated_state[row][col - 1]
+        updated_state[row][col - 1] = 0
+        return Puzzle(updated_state)
+    
+
+    
