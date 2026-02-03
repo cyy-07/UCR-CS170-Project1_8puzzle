@@ -84,4 +84,3 @@ class Puzzle:
         return Puzzle(updated_state)
     
 
-    
