@@ -5,9 +5,9 @@ class Node:
     def __init__(self, state, parent=None, g_n=0, h_n=0):
         self.state = state
         self.parent = parent
-        self.g_n = g_n  # Cost to reach this node
-        self.h_n = h_n  # Heuristic cost to goal(estimate cost to reach goal)
-        self.f_n = g_n + h_n  # Total estimated cost
+        self.g_n = g_n                          # Cost to reach this node
+        self.h_n = h_n                          # Heuristic cost to goal(estimate cost to reach goal)
+        self.f_n = g_n + h_n                    # Total estimated cost
     def expand(self):
         # We want to expand the node to generate its children nodes.
         children = []
