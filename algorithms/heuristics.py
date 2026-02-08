@@ -41,19 +41,20 @@ def manhattan_distance(state):
                 manhattan_dist += abs(i - goal_i) + abs(j - goal_j)
     return manhattan_dist
 
-    #test
-# test_state = [[1,2,3],
-#               [4,0,6],
-#               [7,5,8]]
-# print("Misplaced Tile Heuristic:", count_misplaced_tile(test_state))
-# print("Manhattan Distance Heuristic:", manhattan_distance(test_state))
-
-# test_state = [[1,2,3],
-#               [4,5,6],
-#               [0,7,8]]
-# print("Misplaced Tile Heuristic:", count_misplaced_tile(test_state))
-# print("Manhattan Distance Heuristic:", manhattan_distance(test_state))
+    '''
+    test
+    
+ test = [[1,2,3],
+              [4,0,6],
+               [7,5,8]]
+ print("Misplaced Tile Heuristic:", count_misplaced_tile(test))
+ print("Manhattan Distance Heuristic:", manhattan_distance(test))
+ test_2 = [[1,2,3],
+               [4,5,6],
+               [0,7,8]]
+ print("Misplaced Tile Heuristic:", count_misplaced_tile(test_2))
+ print("Manhattan Distance Heuristic:", manhattan_distance(test_2))
     
 
-
+'''
 
