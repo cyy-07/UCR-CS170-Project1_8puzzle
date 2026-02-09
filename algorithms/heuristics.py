@@ -1,7 +1,11 @@
 #In this heuristics.py file, we define different heuristic functions for the 8-puzzle problem.
-
 #Let's start with the uniform cost search. It is quite simple because h_n is always 0.
 #Therefore, f_n=g_n so we only care about how far we need to reach the node.
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from puzzle import Puzzle
+from node import Node
 def uniform_cost(state):
     return 0
 
@@ -43,19 +47,16 @@ def manhattan_distance(state):
 
 
     '''
-    test
+    #test
 
- test = [[1,2,3],
-              [4,0,6],
-               [7,5,8]]
- print("Misplaced Tile Heuristic:", count_misplaced_tile(test))
- print("Manhattan Distance Heuristic:", manhattan_distance(test))
- test_2 = [[1,2,3],
-               [4,5,6],
-               [0,7,8]]
- print("Misplaced Tile Heuristic:", count_misplaced_tile(test_2))
- print("Manhattan Distance Heuristic:", manhattan_distance(test_2))
-    
-
+test = [        [1,2,3],
+                [5,0,6],
+                [4,7,8]]        #depth=4, using Dr. Keogh's test case. Misplaced tile =4, manhattan distance =4.
+print("Misplaced Tile Heuristic:", count_misplaced_tile(test))
+print("Manhattan Distance Heuristic:", manhattan_distance(test))
+test_2 = [          [1,2,3],
+                    [4,5,6],
+                    [0,7,8]]    #depth=2, using Dr. Keogh's test case. Misplaced tile =2, manhattan distance =2.
+print("Misplaced Tile Heuristic:", count_misplaced_tile(test_2))
+print("Manhattan Distance Heuristic:", manhattan_distance(test_2))
 '''
-
