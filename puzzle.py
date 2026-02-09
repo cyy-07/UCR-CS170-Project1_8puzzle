@@ -18,8 +18,6 @@ class Puzzle:
             state_copy.append(row.copy())
         return state_copy
     
-
-
     def check_is_goal(self):
         # We want to check if the current state is the same with the goal state.
          goal = [[1,2,3],

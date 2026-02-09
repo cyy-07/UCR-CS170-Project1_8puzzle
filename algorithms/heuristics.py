@@ -12,7 +12,7 @@ def count_misplaced_tile(state):
             [7,8,0]]
     count = 0
     for i in range(3):
-        for j in range(3):
+        for j in range(3):    #count how many tiles are wrong placed.
             if state[i][j] != 0 and state[i][j] != goal[i][j]:
                 count += 1
     return count
@@ -28,7 +28,7 @@ def manhattan_distance(state):
     for i in range(3):
         for j in range(3):
             tile = goal[i][j]
-            #We create a dictionary,in order to store the goal position of each tile.
+            #We create a dictionary,in order to store the goal position of each tile to look up.
             if tile != 0:
                 goal_pos[tile] = (i,j)  #Dr. Keogh mentioned that we should not count the blank.
 
@@ -38,12 +38,13 @@ def manhattan_distance(state):
             tile = state[i][j]
             if tile != 0:
                 goal_i, goal_j = goal_pos[tile]
-                manhattan_dist += abs(i - goal_i) + abs(j - goal_j)
+                manhattan_dist += abs(i - goal_i) + abs(j - goal_j) #In both vertical and horizontal direction, we calculate the distance and add both up.
     return manhattan_dist
+
 
     '''
     test
-    
+
  test = [[1,2,3],
               [4,0,6],
                [7,5,8]]

@@ -45,3 +45,6 @@ class Node:
             for tile in row:
                 flat_state.append(tile)
         return tuple(flat_state)
+    
+
+    
