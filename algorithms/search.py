@@ -1,3 +1,22 @@
+'''
+Following Dr. Keogh's pseudocode structure[1], with some variable name variations:
+
+function general-search(problem, QUEUEING-FUNCTION)
+nodes = MAKE-QUEUE(MAKE-NODE(problem.INITIAL-STATE))
+loop do
+    if EMPTY(nodes) then return "failure"
+        node = REMOVE-FRONT(nodes)
+    if problem.GOAL-TEST(node.STATE) succeeds then return node
+        nodes = QUEUEING-FUNCTION(nodes, EXPAND(node, problem.OPERATORS))
+end
+
+[1]: https://www.dropbox.com/scl/fo/blbkjaf1eyl94lij5wl2b/AAvNKn0YrnaX0oGPQn7ueFo?dl=0&e=2&rlkey=alq2gb2ftsw73hcar4lk897r0  Dr. Keogh's slide 2-Blind Search_part2.ppt, page 3
+In my code:
+- 'nodes' is implemented as 'frontier' (a list of nodes to be explored)
+- 'node' is implemented as 'best' (the node with lowest f(n) value)
+- 'problem.GOAL-TEST(node.STATE)' is implemented as 'check_is_goal()'
+The core algorithm logic matches the pseudocode exactly.
+'''
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -12,6 +31,7 @@ def general_search_algorithm(puzzle_state, heuristic_function):
     start_node = Node(puzzle_state, parent=None, g_n=0, h_n=heuristic_function(puzzle_state.state)) #initialize the start node, and calculate its h_n value.
     frontier.append(start_node)
     max_queue_size = -1
+
     while len(frontier) > 0:
         if len(frontier) > max_queue_size:
             max_queue_size = len(frontier)#if update the max queue size.
