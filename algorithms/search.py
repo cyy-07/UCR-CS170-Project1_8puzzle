@@ -17,12 +17,10 @@ In my code:
 - 'problem.GOAL-TEST(node.STATE)' is implemented as 'check_is_goal()'
 The core algorithm logic matches the pseudocode exactly.
 '''
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from node import Node
 from puzzle import Puzzle
-from heuristics import count_misplaced_tile, manhattan_distance
+from algorithms.heuristics import count_misplaced_tile, manhattan_distance
 
 def general_search_algorithm(puzzle_state, heuristic_function):
     frontier = [] #I tried to use the heapq method but failed, so I chose to use a easier list to implement.
@@ -40,9 +38,18 @@ def general_search_algorithm(puzzle_state, heuristic_function):
             if node.f_n < best.f_n:
                 best = node         #update the best node in the frontier(has the lowest f_n value).
         frontier.remove(best)       #remove the best node from the frontier, and expand it.
+        #We need to provide the traceback path in the report, so every time we expand a node, we need print the path to reach it. We can trace back the path by using the parent.
+        print(f"The best state to expand with g(n) = {best.g_n} and h(n) = {best.h_n} is...")
+        best.state.display() #display the best node to expand.
+        print() 
         if best.state.check_is_goal():
             #we found it! return the best node, the number of nodes expanded and the max queue size. And in the report, we can trace back the path and compare.
-            return best, nodes_expanded, max_queue_size
+                print("Goal!!!")
+                print(f"Solution depth was {best.g_n}")
+                print(f"Number of nodes expanded: {nodes_expanded}")
+                print(f"Max queue size: {max_queue_size}")
+                
+                return best, nodes_expanded, max_queue_size
         #now mark it as visited.
         visited.append(best.tuple())
         nodes_expanded += 1
@@ -59,7 +66,7 @@ def general_search_algorithm(puzzle_state, heuristic_function):
     return None, nodes_expanded, max_queue_size #if we cannot find the solution, return None and the number of nodes expanded and the max queue size.
 
 def uniform_cost_search(puzzle_state):
-    return general_search_algorithm(puzzle_state, heuristic_function=lambda state: 0)
+    return general_search_algorithm(puzzle_state, heuristic_function=lambda state: 0)#As I mentioned in the report, here we use a lambda function to make the heuristic value always 0.
 def a_star_with_manhattan(puzzle_state):
     return general_search_algorithm(puzzle_state, heuristic_function=manhattan_distance)
 def a_star_with_misplaced_tile(puzzle_state):
