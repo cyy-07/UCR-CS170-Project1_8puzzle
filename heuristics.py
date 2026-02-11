@@ -1,9 +1,7 @@
 #In this heuristics.py file, we define different heuristic functions for the 8-puzzle problem.
 #Let's start with the uniform cost search. It is quite simple because h_n is always 0.
 #Therefore, f_n=g_n so we only care about how far we need to reach the node.
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from puzzle import Puzzle
 from node import Node
 def uniform_cost(state):

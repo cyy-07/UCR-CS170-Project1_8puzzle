@@ -1,6 +1,6 @@
 from puzzle import Puzzle
-from algorithms.search import uniform_cost_search, a_star_with_misplaced_tile, a_star_with_manhattan
-from algorithms.heuristics import uniform_cost, count_misplaced_tile, manhattan_distance
+from search import uniform_cost_search, a_star_with_misplaced_tile, a_star_with_manhattan
+from heuristics import uniform_cost, count_misplaced_tile, manhattan_distance
 
 def main():
     print("Welcome to Yiyang's 8-puzzle solver!")
@@ -39,14 +39,15 @@ def main():
             return
         select_algorithm(Puzzle(test_state))#Debug: I first tried select_algorithm(test_state), but error.
     elif user_choice == "2":
-        print("\n It is your choice now! Please enter your own puzzle state, using 0 to represent the blank tile. Please only enter valid 8-puzzles!")
+        print("\nIt is your choice now! Please enter your own puzzle state, using 0 to represent the blank tile.")
+        print("Please only enter valid 8-puzzles!")
+        print("Type RETURN only when finished.\n")
         own_puzzle_row_one = input("Enter the first row: ")
         own_puzzle_row_two = input("Enter the second row: ")
         own_puzzle_row_three = input("Enter the third row: ")
-        for i in range(3):
-            own_puzzle_row_one[i] = int(own_puzzle_row_one[i])
-            own_puzzle_row_two[i] = int(own_puzzle_row_two[i])
-            own_puzzle_row_three[i] = int(own_puzzle_row_three[i])
+        own_puzzle_row_one =[int(x) for x in own_puzzle_row_one.split()]
+        own_puzzle_row_two =[int(x) for x in own_puzzle_row_two.split()]
+        own_puzzle_row_three =[int(x) for x in own_puzzle_row_three.split()]
         user_input_state = [own_puzzle_row_one, own_puzzle_row_two, own_puzzle_row_three]
         select_algorithm(Puzzle(user_input_state)) #Debug: I first tried select_algorithm(user_input_state), but error.
         # Fixed by wrapping the list into a Puzzle object so the search algorithm so that we can use .display()

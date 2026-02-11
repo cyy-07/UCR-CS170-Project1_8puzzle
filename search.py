@@ -20,7 +20,7 @@ The core algorithm logic matches the pseudocode exactly.
 
 from node import Node
 from puzzle import Puzzle
-from algorithms.heuristics import count_misplaced_tile, manhattan_distance
+from heuristics import count_misplaced_tile, manhattan_distance
 
 def general_search_algorithm(puzzle_state, heuristic_function):
     frontier = [] #I tried to use the heapq method but failed, so I chose to use a easier list to implement.
