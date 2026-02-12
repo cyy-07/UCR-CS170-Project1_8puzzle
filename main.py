@@ -55,20 +55,25 @@ def main():
         print("Invalid choice! Please enter 1 or 2.")
         return
 def select_algorithm(puzzle_state):
-    print("\n Now, please select the algorithm you want to use to solve the puzzle.")
-    print("choose '1' -> Uniform Cost Search")
-    print("choose '2' -> A* with Misplaced Tile Heuristic")
-    print("choose '3' -> A* with Manhattan Distance Heuristic")
-    algorithm_choice = input("Please enter a number from 1 to 3: ")
-    if algorithm_choice == "1":
-        result_node, nodes_expanded, max_queue_size = uniform_cost_search(puzzle_state)
-    elif algorithm_choice == "2":
-        result_node, nodes_expanded, max_queue_size = a_star_with_misplaced_tile(puzzle_state)
-    elif algorithm_choice == "3":
-        result_node, nodes_expanded, max_queue_size = a_star_with_manhattan(puzzle_state)
-    else:
-        print("Invalid choice! Please enter a number from 1 to 3.")
-        return
+    while True:
+        print("\n Now, please select the algorithm you want to use to solve the puzzle.")
+        print("choose '1' -> Uniform Cost Search")
+        print("choose '2' -> A* with Misplaced Tile Heuristic")
+        print("choose '3' -> A* with Manhattan Distance Heuristic")
+        print("choose '4' -> Return to main menu(change puzzle)")
+        
+        algorithm_choice = input("Please enter a number from 1 to 4: ")
+        if algorithm_choice == "1":
+            result_node, nodes_expanded, max_queue_size = uniform_cost_search(puzzle_state)
+        elif algorithm_choice == "2":
+            result_node, nodes_expanded, max_queue_size = a_star_with_misplaced_tile(puzzle_state)
+        elif algorithm_choice == "3":
+            result_node, nodes_expanded, max_queue_size = a_star_with_manhattan(puzzle_state)
+        elif algorithm_choice == "4":
+            break
+        else:
+            print("Invalid choice! Please enter a number from 1 to 3.")
+            return
     
 if __name__ == "__main__":
         main()
