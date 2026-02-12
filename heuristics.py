@@ -32,7 +32,7 @@ def manhattan_distance(state):
             tile = goal[i][j]
             #We create a dictionary,in order to store the goal position of each tile to look up.
             if tile != 0:
-                goal_pos[tile] = (i,j)  #Dr. Keogh mentioned that we should not count the blank.
+                goal_pos[tile] = (i,j)  #Dr. Eamonn mentioned that we should not count the blank.
 
     #Calculate the Manhattan distance.
     for i in range(3):
@@ -49,12 +49,12 @@ def manhattan_distance(state):
 
 test = [        [1,2,3],
                 [5,0,6],
-                [4,7,8]]        #depth=4, using Dr. Keogh's test case. Misplaced tile =4, manhattan distance =4.
+                [4,7,8]]        #depth=4, using Dr. Eamonn's test case. Misplaced tile =4, manhattan distance =4.
 print("Misplaced Tile Heuristic:", count_misplaced_tile(test))
 print("Manhattan Distance Heuristic:", manhattan_distance(test))
 test_2 = [          [1,2,3],
                     [4,5,6],
-                    [0,7,8]]    #depth=2, using Dr. Keogh's test case. Misplaced tile =2, manhattan distance =2.
+                    [0,7,8]]    #depth=2, using Dr. Eamonn's test case. Misplaced tile =2, manhattan distance =2.
 print("Misplaced Tile Heuristic:", count_misplaced_tile(test_2))
 print("Manhattan Distance Heuristic:", manhattan_distance(test_2))
 '''

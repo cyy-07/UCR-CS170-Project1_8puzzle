@@ -1,5 +1,5 @@
 '''
-Following Dr. Keogh's pseudocode structure[1], with some variable name variations:
+Following Dr. Eamonn's pseudocode structure[1], with some variable name variations:
 
 function general-search(problem, QUEUEING-FUNCTION)
 nodes = MAKE-QUEUE(MAKE-NODE(problem.INITIAL-STATE))
@@ -10,7 +10,7 @@ loop do
         nodes = QUEUEING-FUNCTION(nodes, EXPAND(node, problem.OPERATORS))
 end
 
-[1]: https://www.dropbox.com/scl/fo/blbkjaf1eyl94lij5wl2b/AAvNKn0YrnaX0oGPQn7ueFo?dl=0&e=2&rlkey=alq2gb2ftsw73hcar4lk897r0  Dr. Keogh's slide 2-Blind Search_part2.ppt, page 3
+[1]: https://www.dropbox.com/scl/fo/blbkjaf1eyl94lij5wl2b/AAvNKn0YrnaX0oGPQn7ueFo?dl=0&e=2&rlkey=alq2gb2ftsw73hcar4lk897r0  Dr. Eamonn's slide 2-Blind Search_part2.ppt, page 3
 In my code:
 - 'nodes' is implemented as 'frontier' (a list of nodes to be explored)
 - 'node' is implemented as 'best' (the node with lowest f(n) value)
@@ -21,8 +21,10 @@ The core algorithm logic matches the pseudocode exactly.
 from node import Node
 from puzzle import Puzzle
 from heuristics import count_misplaced_tile, manhattan_distance
+import time
 
 def general_search_algorithm(puzzle_state, heuristic_function):
+    start_time = time.time() #record the start time to calculate the running time of the algorithm.
     frontier = [] #I tried to use the heapq method but failed, so I chose to use a easier list to implement.
     visited = [] #record the visited states, to avoid repeated states.
     nodes_expanded = 0
@@ -48,6 +50,8 @@ def general_search_algorithm(puzzle_state, heuristic_function):
                 print(f"Solution depth was {best.g_n}")
                 print(f"Number of nodes expanded: {nodes_expanded}")
                 print(f"Max queue size: {max_queue_size}")
+                end_time = time.time()                
+                print(f"Running time: {end_time - start_time:.1f} seconds")
                 
                 return best, nodes_expanded, max_queue_size
         #now mark it as visited.
@@ -78,7 +82,7 @@ def a_star_with_misplaced_tile(puzzle_state):
 
 test_state = [  [1,2,3],
                 [5,0,6],
-                [4,7,8]]#depth=4, using Dr. Keogh's test case.
+                [4,7,8]]#depth=4, using Dr. Eamonn's test case.
 puzzle = Puzzle(test_state)
 result_node, nodes_expanded, max_queue_size = a_star_with_manhattan(puzzle)
 print("Nodes Expanded:", nodes_expanded)
