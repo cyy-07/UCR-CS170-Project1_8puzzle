@@ -26,7 +26,7 @@ import time
 def general_search_algorithm(puzzle_state, heuristic_function):
     start_time = time.time() #record the start time to calculate the running time of the algorithm.
     frontier = [] #I tried to use the heapq method but failed, so I chose to use a easier list to implement.
-    visited = [] #record the visited states, to avoid repeated states.
+    visited = [] #record the visited states, to avoid repeated states.url:https://docs.python.org/3/library/time.html
     nodes_expanded = 0
     start_node = Node(puzzle_state, parent=None, g_n=0, h_n=heuristic_function(puzzle_state.state)) #initialize the start node, and calculate its h_n value.
     frontier.append(start_node)
@@ -51,7 +51,7 @@ def general_search_algorithm(puzzle_state, heuristic_function):
                 print(f"Number of nodes expanded: {nodes_expanded}")
                 print(f"Max queue size: {max_queue_size}")
                 end_time = time.time()                
-                print(f"Running time: {end_time - start_time:.1f} seconds")
+                print(f"Running time: {end_time - start_time:.2f} seconds")
                 
                 return best, nodes_expanded, max_queue_size
         #now mark it as visited.
